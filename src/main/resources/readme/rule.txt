@@ -1,0 +1,38 @@
+"target": "(tag,css,attr)只允许这三种|(前面配置对应的值)|如果此处配置为数值，说明是要取第几个，不配则取0，如果配置了tag名，则取对就的node下的tag集合",	
+filter:内容要过虑的标签，多个用“|”隔开  。如“p|img|span”，如果没有限制标签，则不配此字段
+val:三个类型   atrr,text html,其中attr是取属性值
+其它的为对应的要获取字段配置
+{
+	"root": {
+		"target": "tag|section|ol",	
+		"shortImg": {
+			"target": "tag|img",
+			"val": "src"
+		},
+		"title": {
+			"target": "css|font20",
+			"val": "text"
+		},
+		"remark": {
+			"target": "tag|li",
+			"val": "text"
+		},
+		"ctime_str": {
+			"target": "tag|span",
+			"val": "text"
+		},
+		"viewers": {
+			"target": "css|view",
+			"val": "text"
+		},
+		"url": {
+			"target": "tag|a",
+			"val": "href"
+		},
+		"content": {
+			"target": "css|js-article",
+			"val": "html",
+			"filter":"p"
+		}
+	}
+}

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="   
+           http://www.springframework.org/schema/beans   
+           http://www.springframework.org/schema/beans/spring-beans.xsd   
+           http://www.springframework.org/schema/context   
+           http://www.springframework.org/schema/context/spring-context.xsd  
+           http://www.springframework.org/schema/mvc   
+           http://www.springframework.org/schema/mvc/spring-mvc.xsd" >
+
+	<!-- 注解探测器 -->
+	<context:component-scan base-package="com.xbalao.controller" />
+
+	<mvc:default-servlet-handler/>
+	
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<mvc:exclude-mapping path="/static/**" />
+			<mvc:exclude-mapping path="/index.html" />
+			<mvc:exclude-mapping path="/404.html" />
+			<bean id="actionInterceptor" class="com.xbalao.interceptor.web.ActionInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+
+	<!-- 转json时写入acceptCharset为UTF-8 -->
+	<mvc:annotation-driven enable-matrix-variables="true">
+		<mvc:message-converters>
+			<bean
+				class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+				<property name="objectMapper">
+					<bean class="com.xbalao.interceptor.web.ObjectMappingCustomer"></bean>
+				</property>
+				
+			</bean>
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<constructor-arg>
+					<bean class="java.nio.charset.Charset" factory-method="forName">
+						<constructor-arg value="UTF-8" />
+					</bean>
+				</constructor-arg>
+				<property name="writeAcceptCharset" value="true" />
+				<property name="supportedMediaTypes" value="text/plain;charset=UTF-8" />
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+
+	<!-- 异常处理 -->
+	<bean id="exceptionHandler" class="com.xbalao.service.exception.DefaultGlobalExceptionResolver" />
+
+</beans>

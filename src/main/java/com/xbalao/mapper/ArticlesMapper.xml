@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xbalao.mapper.ArticlesMapper">
+
+
+   <insert id="batchSave">
+   		<selectKey resultType ="java.lang.Integer" keyProperty= "id"
+                   order= "AFTER">
+                  SELECT LAST_INSERT_ID()
+         </selectKey >
+	   	insert into t_article(shorterImg,shortImg,title,keywrolds,remark,ctime_str,ctime,viewers,content,fromer,editer,status,type,istop,srcDomain,_viewers,srcId) values
+	   	<foreach collection="list" item="article" index="index" separator=",">
+	   		(#{article.shorterImg},
+			#{article.shortImg},
+			#{article.title},
+			#{article.keywrolds},
+			#{article.remark},
+			#{article.ctime_str},
+			#{article.ctime},
+			#{article.viewers},
+			#{article.content},
+			#{article.fromer},
+			#{article.editer},
+			#{article.status},
+			#{article.type},
+			#{article.istop},
+			#{article.srcDomain},
+			#{article._viewers},
+			#{article.srcId})
+	   	</foreach>
+   </insert>
+   
+    <insert id="batchSaveImgs">
+   		<selectKey resultType ="java.lang.Integer" keyProperty= "id"
+                   order= "AFTER">
+                  SELECT LAST_INSERT_ID()
+         </selectKey >
+	   	insert into t_imgs(src,status,ctime,dtime,domain,srcId,deSrc) values
+	   	<foreach collection="list" item="imgs" index="index" separator=",">
+	   		(#{imgs.src},
+			#{imgs.status},
+			#{imgs.ctime},
+			#{imgs.dtime},
+			#{imgs.domain},
+			#{imgs.srcId},
+			#{imgs.deSrc}
+			)
+	   	</foreach>
+   </insert>
+
+</mapper>

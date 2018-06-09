@@ -1,0 +1,45 @@
+<div class="container" role="navigation" style="padding-right: 0;clear:both;">
+		<a href="/" >
+			<div class="navbar-left" >
+			<img src="/static/img/logo.png" alt="区块链见闻" title="薪火科技">
+			<p class="h_tips" ><span class="c_org">区块链新闻资讯平台</span><br/> <span class="c_bl">教您如何玩转区块链</span></p>
+		</div></a>
+		<div class="navbar-right" style="float:left!important;margin-right: -50px;">
+			<div class="container-fluid" style="padding-left: 0;">
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="/">首页 <span class="sr-only"></span></a></li>
+
+
+						<li class="dropdown">
+							<a href="/article/list?key=区块链" class="dropdown-toggle" >区块链</a>
+						</li>
+						<li class="dropdown">
+							<a href="/article/list?key=EOS" class="dropdown-toggle" >EOS</a>
+						</li>
+
+						<li class="dropdown">
+							<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">更多类别 <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="/article/list?key=虚拟币" class="dropdown-toggle" >虚拟币</a></li>
+								<li><a href="/article/list?key=技术学习" class="dropdown-toggle" >技术学习</a></li>
+								<li><a href="/article/list?key=比特币" class="dropdown-toggle" >比特币</a></li>
+							</ul>
+						</li>
+
+
+					</ul>
+				</div><!-- /.navbar-collapse -->
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	$(".dropdown").mouseenter(function(){
+		$(this).find(".dropdown-menu").show();
+	});
+	$(".dropdown").mouseleave(function(){
+		$(this).find(".dropdown-menu").hide();
+	});
+</script>

@@ -1,0 +1,44 @@
+			<!-- 左侧 -->
+			<div class="col-lg-8 con-left">
+				<!--轮播-->
+				<!--#include file="/static/model/scoller.html"-->	
+				
+
+
+				<!-- 热点详情 -->
+				<div class="topic">
+					<div class="topic-nav">
+						<span class="curr" value="0">最新</span>
+						<span value="1">区块链</span><span value="2">虚拟币</span><span value="5">区块链应用</span><span value="6">行业大佬</span><span value="8">区块链政策</span><span value="4">比特币</span><span value="3">技术学习</span><span value="7">深度观察</span>					</div>
+					<div class="topic-list">
+						<ul id="u_news_list">
+							 <#list leftList as item>
+								<li>
+									<a href="/article/${item.id}.html">
+										<div class="topic-img pull-left">
+											<img class="path" src="${item.shortImg}">
+										</div>
+										<div class="topic-word pull-left">
+											<h5 class="title">${item.title}</h5>
+											<p class="description">${item.desc}</p>
+	
+											<div class="topic-icon">
+												<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+												<span class="update_time">${item.ctime}</span>
+											</div>
+											<div class="topic-icon">
+												<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+												<span class="view"> ${item.viewers}</php>  阅读 </span>
+											</div>
+	
+										</div>
+									</a>
+								</li>
+							 </#list>
+						</ul>
+						<p id="p_more1" style="text-align:center;cursor:pointer;clear: both;font-size: 15px;padding-top: 30px;">
+							<span style="padding: 15px 50px;background-color: #fafafb;border: 1px solid #f1f1f1;margin: 10px 0 0 86px;">加载更多</span>
+						</p>
+					</div>
+				</div>
+			</div>
